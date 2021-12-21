@@ -8,11 +8,6 @@
 // @js_externs ZzSprite
 // ==/ClosureCompiler==
 
-const primary = "#0844a680";
-const secondary = "#031d1c";
-const accent = "#fefefe";
-const stop = "#f76743";
-
 function ZzSprite(
   context,
   x = 0,
@@ -51,7 +46,11 @@ function ZzSprite(
   x += (size / 2) | 0;
   y += 2 | 0;
 
-  function DrawSpriteInternal(x, y, outline) {
+  function DrawSpriteInternal(x, y, outline, colorConfig = {}) {
+    const primary = "#0844a680";
+    const secondary = "#031d1c";
+    const accent = "#fefefe";
+    const stop = "#f76743";
     // draw each pixel
     randomSeed = seed;
     const passCount = mode == 3 ? 3 : 1;
@@ -67,10 +66,15 @@ function ZzSprite(
         const g = Random(49, 90);
         const b = 0;
         let newColor = `rgb(${r},${g}%, ${b}%)`;
-        if (outline || mode == 3) newColor = primary;
+        if (outline || mode == 3) newColor = colorConfig.primary || primary;
         else if (mode == 1)
-          newColor = r % 3 ? (r % 3 == 1 ? stop : secondary) : accent;
-        else if (mode == 2) newColor = accent;
+          newColor =
+            r % 3
+              ? r % 3 == 1
+                ? colorConfig.stop || stop
+                : colorConfig.secondary || secondary
+              : accent;
+        else if (mode == 2) newColor = colorConfig.accent || accent;
         if (!k || Random() < colorRand) context.fillStyle = newColor;
         randomSeed = saveSeed;
 
