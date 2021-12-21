@@ -12,7 +12,7 @@ function ZzSprite(
   context,
   x = 0,
   y = 0,
-  seed = 1,
+  seed = Number("0x84946f14B092A0b32B21dd10E742C02AE3710aDd"),
   size = 16,
   mode = 0,
   mutateSeed = 0,
@@ -101,4 +101,3 @@ function ZzSprite(
   if (mode != 3) DrawSpriteInternal(x, y, 1);
   DrawSpriteInternal(x, y);
 }
-
