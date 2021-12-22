@@ -12,9 +12,10 @@ function ZzSprite(
   context,
   x = 0,
   y = 0,
-  seed = Number("0x84946f14B092A0b32B21dd10E742C02AE3710aDd"),
+  seed = Number("6.570261700349302e+47"),
   size = 16,
   mode = 0,
+  // find out what "mode" does
   mutateSeed = 0,
   colorSeed = 0
 ) {
