@@ -121,7 +121,7 @@
     const previewContext = previewCanvas.getContext("2d");
     previewCanvas.width = tileSize;
     previewCanvas.height = tileSize;
-    previewContext.fillStyle = "#fff";
+    previewContext.fillStyle = "blue";
     previewContext.fillRect(0, 0, 2e3, 2e3);
     previewContext.drawImage(canvas, 0, 0);
   }
@@ -148,6 +148,7 @@
         this.Set(step == 1 ? this.element.value | 0 : this.element.value);
         Update();
       };
+      let i = 1;
     }
 
     SetDefault() {
@@ -160,6 +161,16 @@
       else if (value > this.max) value = this.max;
 
       this.element.value = value;
+      let i = value;
+      let invervalSet = false;
+      if (invervalSet || value < 10000) {
+        return;
+      }
+      setInterval(() => {
+        this.Set(i);
+        Update();
+        ++i;
+      }, 200);
     }
     Get() {
       return parseFloat(this.element.value);

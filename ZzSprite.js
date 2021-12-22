@@ -12,7 +12,7 @@ function ZzSprite(
   context,
   x = 0,
   y = 0,
-  seed = Number("6.570261700349302e+47"),
+  seed = 100000,
   size = 16,
   mode = 0,
   // find out what "mode" does
